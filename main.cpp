@@ -37,20 +37,19 @@ void displayMap(Minesweeper *game, int lcurs, int ccurs, bool loss = false) {
       rlutil::locate(c + 10, l + 10);
 
       // Set the cursor background color
-      if (l == lcurs && c == ccurs)
+      if (l == lcurs && c == ccurs) {
         rlutil::setBackgroundColor(rlutil::GREY);
-      else
+      } else
         rlutil::setBackgroundColor(rlutil::BLACK);
-
       // If the cell is flagged, draw a flag
       if (game->getCell(l, c).marked) {
         rlutil::setColor(rlutil::RED);
 
         // Show the bad flags if the player lost
         if (loss && !game->getCell(l, c).bomb)
-          rlutil::setChar('X');
+          printf("X");
         else
-          rlutil::setChar('>');
+          printf(">");
       // If the cell was pressed, show its number
       } else if (game->getCell(l, c).pressed) {
         rlutil::setColor(rlutil::WHITE);
@@ -59,18 +58,18 @@ void displayMap(Minesweeper *game, int lcurs, int ccurs, bool loss = false) {
 
         // Cells with no neighbours are not shown
         if (neighbours == 0)
-          rlutil::setChar(' ');
+          printf(" ");
         else
-          rlutil::setChar('0' + neighbours);
+          printf("%d", neighbours);
       } else if (!loss) {
         rlutil::setColor(rlutil::WHITE);
-        rlutil::setChar('.');
+        printf(".");
       } else if (game->getCell(l, c).bomb) {
         rlutil::setColor(rlutil::RED);
-        rlutil::setChar('*');
+        printf("*");
       } else {
         rlutil::setColor(rlutil::WHITE);
-        rlutil::setChar('.');
+        printf(".");
       }
     }
 
