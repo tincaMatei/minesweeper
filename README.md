@@ -1,5 +1,5 @@
 # minesweeper
-un minesweeper besit
+un minesweeper
 
 # Controale
 * WASD -> se misca cursorul
